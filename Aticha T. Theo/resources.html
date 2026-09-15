@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Exam Preparation - Resources</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fff8f7;
+            color: #3d3142;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVIGATION
+           ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(61, 49, 66, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #ead6df;
+        }
+
+        nav h1 {
+            font-size: 28px;
+            font-weight: 800;
+
+            background: linear-gradient(
+                90deg,
+                #f29bb2,
+                #d8a7d8
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #f29bb2;
+        }
+
+        /* CURRENT PAGE */
+
+        nav a.active {
+            color: #f29bb2;
+        }
+
+
+        /* =========================
+           PAGE HEADER
+           ========================= */
+
+        .page-header {
+            padding: 90px 20px;
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(242, 155, 178, 0.3),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(216, 167, 216, 0.3),
+                    transparent 30%
+                ),
+
+                #fff8f7;
+        }
+
+        .small-title {
+            color: #c96f8e;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        .page-header h2 {
+            font-size: clamp(45px, 7vw, 70px);
+            line-height: 1.05;
+            color: #4a3547;
+            margin-bottom: 25px;
+        }
+
+        .page-header p {
+            color: #8b7485;
+            font-size: 20px;
+        }
+
+
+        /* =========================
+           RESOURCES
+           ========================= */
+
+        .resources-section {
+            padding: 100px 7%;
+            text-align: center;
+            background: #fff0f3;
+        }
+
+        .section-label {
+            color: #c96f8e;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+        }
+
+        .resources-section h2 {
+            font-size: 42px;
+            line-height: 1.2;
+            color: #4a3547;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: #806c7a;
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           CARDS
+           ========================= */
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 290px;
+            padding: 35px;
+            text-align: left;
+
+            background: #ffffff;
+
+            border: 1px solid #efd9e1;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(110, 70, 90, 0.1);
+
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            border-color: #e9a3b8;
+
+            box-shadow:
+                0 20px 45px
+                rgba(220, 130, 160, 0.2);
+        }
+
+        .card h3 {
+            color: #c96f8e;
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #806c7a;
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           BUTTON
+           ========================= */
+
+        .resource-button {
+            display: inline-block;
+
+            padding: 12px 25px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: linear-gradient(
+                135deg,
+                #e9a3b8,
+                #c99acb
+            );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .resource-button:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(201, 111, 142, 0.35);
+        }
+
+
+        /* =========================
+           POPUP
+           ========================= */
+
+        #lessonPopup {
+
+            display: none;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(61, 49, 66, 0.8);
+
+            z-index: 999999;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+
+        .popup-box {
+
+            position: relative;
+
+            width: 100%;
+            max-width: 700px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: #fff8f7;
+
+            padding: 40px;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0, 0, 0, 0.4);
+
+            animation: popupOpen 0.3s ease;
+        }
+
+
+        @keyframes popupOpen {
+
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* =========================
+           CLOSE
+           ========================= */
+
+        .close-popup {
+
+            position: absolute;
+
+            top: 15px;
+            right: 18px;
+
+            width: 42px;
+            height: 42px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #f3dce4;
+
+            color: #4a3547;
+
+            font-size: 28px;
+
+            cursor: pointer;
+        }
+
+        .close-popup:hover {
+            background: #c96f8e;
+            color: white;
+        }
+
+
+        /* =========================
+           POPUP TITLE
+           ========================= */
+
+        #popupTitle {
+
+            color: #4a3547;
+
+            font-size: 32px;
+
+            margin-bottom: 8px;
+
+            padding-right: 45px;
+        }
+
+        #popupDescription {
+
+            color: #806c7a;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           LESSON BUTTONS
+           ========================= */
+
+        #lessonContainer {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .lesson {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 16px;
+
+            background: white;
+
+            border: 1px solid #efd9e1;
+
+            border-radius: 15px;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .lesson:hover {
+
+            transform: translateX(6px);
+
+            border-color: #e9a3b8;
+
+            background: #fff0f3;
+        }
+
+        .lesson-number {
+
+            min-width: 48px;
+
+            height: 48px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #e9a3b8,
+                #c99acb
+            );
+
+            color: white;
+
+            font-weight: bold;
+        }
+
+        .lesson strong {
+
+            display: block;
+
+            color: #4a3547;
+
+            font-size: 16px;
+
+            margin-bottom: 3px;
+        }
+
+        .lesson small {
+
+            color: #8b7485;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           ACTUAL LESSON CONTENT
+           ========================= */
+
+        .lesson-content {
+
+            background: white;
+
+            border: 1px solid #efd9e1;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            color: #806c7a;
+
+            text-align: left;
+
+            line-height: 1.8;
+        }
+
+        .lesson-content h3 {
+
+            color: #c96f8e;
+
+            font-size: 24px;
+
+            margin-bottom: 15px;
+        }
+
+        .lesson-content h4 {
+
+            color: #4a3547;
+
+            font-size: 18px;
+
+            margin-top: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .lesson-content ul {
+
+            margin-left: 25px;
+
+            margin-top: 8px;
+        }
+
+        .lesson-content li {
+
+            margin-bottom: 6px;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+           ========================= */
+
+        .back-button {
+
+            margin-bottom: 20px;
+
+            padding: 10px 18px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: #f3dce4;
+
+            color: #4a3547;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+        .back-button:hover {
+
+            background: #c96f8e;
+
+            color: white;
+        }
+
+
+        /* =========================
+           STUDY SECTION
+           ========================= */
+
+        .study-section {
+
+            padding: 100px 7%;
+
+            text-align: center;
+
+            background: #fff8f7;
+        }
+
+        .study-section h2 {
+
+            font-size: 42px;
+
+            color: #4a3547;
+
+            margin-bottom: 20px;
+        }
+
+        .study-section p {
+
+            max-width: 700px;
+
+            margin: 0 auto;
+
+            color: #806c7a;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+
+            padding: 45px 20px;
+
+            text-align: center;
+
+            background: #3d3142;
+
+            border-top: 1px solid #ead6df;
+        }
+
+        footer h3 {
+
+            color: white;
+
+            font-size: 22px;
+
+            margin-bottom: 5px;
+        }
+
+        footer p {
+
+            color: #d8c4ce;
+        }
+
+        footer .copyright {
+
+            margin-top: 20px;
+
+            font-size: 13px;
+
+            color: #a9919f;
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding: 20px;
+            }
+
+            nav ul {
+
+                gap: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            nav a {
+
+                font-size: 14px;
+            }
+
+            .page-header {
+
+                padding: 70px 20px;
+            }
+
+            .page-header h2 {
+
+                font-size: 45px;
+            }
+
+            .resources-section {
+
+                padding: 70px 20px;
+            }
+
+            .resources-section h2 {
+
+                font-size: 32px;
+            }
+
+            .study-section {
+
+                padding: 70px 20px;
+            }
+
+            .study-section h2 {
+
+                font-size: 32px;
+            }
+
+            .card {
+
+                width: 100%;
+
+                max-width: 400px;
+            }
+
+            .popup-box {
+
+                padding: 30px 20px;
+            }
+
+            #popupTitle {
+
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+         ========================= -->
+
+    <nav>
+
+        <h1>
+            Exam Preparation
+        </h1>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="schedule.html">Schedule</a>
+            </li>
+
+            <!-- RESOURCES IS ACTIVE -->
+
+            <li>
+                <a href="resources.html" class="active">Resources</a>
+            </li>
+
+            <li>
+                <a href="tips.html">Study Tips</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         PAGE HEADER
+         ========================= -->
+
+    <section class="page-header">
+
+        <p class="small-title">
+            STUDY MATERIALS
+        </p>
+
+        <h2>
+            Study Resources
+        </h2>
+
+        <p>
+            Find useful materials to help you
+            prepare for every subject.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         RESOURCES
+         ========================= -->
+
+    <section class="resources-section">
+
+        <p class="section-label">
+            YOUR STUDY TOOLKIT
+        </p>
+
+        <h2>
+            Everything You Need<br>
+            To Study Better
+        </h2>
+
+        <p class="intro">
+            Choose a subject and explore useful resources
+            that can help you understand your lessons,
+            practice your skills, and prepare for exams.
+        </p>
+
+
+        <div class="cards">
+
+
+            <!-- MATHEMATICS -->
+
+            <div class="card">
+
+                <h3>
+                    Mathematics
+                </h3>
+
+                <p>
+                    Practice formulas, equations, and
+                    problem-solving exercises to improve
+                    your mathematics skills.
+                </p>
+
+                <button
+                    type="button"
+                    class="resource-button"
+                    data-subject="math"
+                >
+                    Start Learning →
+                </button>
+
+            </div>
+
+
+            <!-- SCIENCE -->
+
+            <div class="card">
+
+                <h3>
+                    Science
+                </h3>
+
+                <p>
+                    Review important concepts, definitions,
+                    diagrams, and notes to prepare for
+                    your science exam.
+                </p>
+
+                <button
+                    type="button"
+                    class="resource-button"
+                    data-subject="science"
+                >
+                    Start Learning →
+                </button>
+
+            </div>
+
+
+            <!-- ENGLISH -->
+
+            <div class="card">
+
+                <h3>
+                    English
+                </h3>
+
+                <p>
+                    Improve grammar, vocabulary, reading,
+                    and writing skills with useful
+                    practice materials.
+                </p>
+
+                <button
+                    type="button"
+                    class="resource-button"
+                    data-subject="english"
+                >
+                    Start Learning →
+                </button>
+
+            </div>
+
+
+            <!-- SOCIAL STUDIES -->
+
+            <div class="card">
+
+                <h3>
+                    Social Studies
+                </h3>
+
+                <p>
+                    Develop your knowledge and understanding
+                    through engaging learning materials
+                    and practical exercises.
+                </p>
+
+                <button
+                    type="button"
+                    class="resource-button"
+                    data-subject="social"
+                >
+                    Start Learning →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LESSON POPUP
+         ========================= -->
+
+    <div id="lessonPopup">
+
+        <div class="popup-box">
+
+            <button
+                type="button"
+                class="close-popup"
+                id="closePopup"
+            >
+                &times;
+            </button>
+
+
+            <h2 id="popupTitle">
+                Lessons
+            </h2>
+
+            <p id="popupDescription">
+                Choose a lesson to begin.
+            </p>
+
+            <div id="lessonContainer">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         STUDY SECTION
+         ========================= -->
+
+    <section class="study-section">
+
+        <p class="section-label">
+            KEEP LEARNING
+        </p>
+
+        <h2>
+            Small Steps Make<br>
+            A Big Difference
+        </h2>
+
+        <p>
+            Set aside some time every day to review your
+            notes, practice questions, and work on the
+            subjects you find difficult.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        <h3>
+            Exam Preparation
+        </h3>
+
+        <p>
+            Prepare smarter. Study better. Succeed.
+        </p>
+
+        <p class="copyright">
+            © 2026 Exam Ready Website
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+        const lessons = {
+
+            math: {
+
+                title: "Mathematics Lessons",
+
+                description:
+                    "Choose a Mathematics topic to study.",
+
+                items: [
+
+                    {
+                        title: "Numbers and Operations",
+
+                        description:
+                            "Learn how to work with whole numbers and basic operations.",
+
+                        content: `
+                            <h3>Numbers and Operations</h3>
+
+                            <p>
+                                Numbers are used to count, measure, compare,
+                                and solve problems.
+                            </p>
+
+                            <h4>Key Operations</h4>
+
+                            <ul>
+                                <li>Addition: combining numbers.</li>
+                                <li>Subtraction: finding the difference.</li>
+                                <li>Multiplication: repeated addition.</li>
+                                <li>Division: sharing a number into equal groups.</li>
+                            </ul>
+
+                            <h4>Example</h4>
+
+                            <p>
+                                8 + 4 = 12
+                            </p>
+
+                            <p>
+                                20 ÷ 5 = 4
+                            </p>
+                        `
+                    },
+
+                    {
+                        title: "Fractions",
+
+                        description:
+                            "Learn how to understand and calculate fractions.",
+
+                        content: `
+                            <h3>Fractions</h3>
+
+                            <p>
+                                A fraction represents a part of a whole.
+                            </p>
+
+                            <h4>Parts of a Fraction</h4>
+
+                            <ul>
+                                <li>The numerator is the top number.</li>
+                                <li>The denominator is the bottom number.</li>
+                            </ul>
+
+                            <h4>Example</h4>
+
+                            <p>
+                                In 3/4, 3 is the numerator and 4 is the denominator.
+                            </p>
+                        `
+                    },
+
+                    {
+                        title: "Algebra",
+
+                        description:
+                            "Practice variables, expressions, and algebraic rules.",
+
+                        content: `
+                            <h3>Algebra</h3>
+
+                            <p>
+                                Algebra uses letters and symbols to represent
+                                unknown numbers.
+                            </p>
+
+                            <h4>Example</h4>
+
+                            <p>
+                                x + 5 = 10
+                            </p>
+
+                            <p>
+                                Therefore, x = 5.
+                            </p>
+                        `
+                    },
+
+                    {
+                        title: "Equations",
+
+                        description:
+                            "Learn how to solve mathematical equations.",
+
+                        content: `
+                            <h3>Equations</h3>
+
+                            <p>
+                                An equation is a mathematical statement showing
+                                that two expressions are equal.
+                            </p>
+
+                            <h4>Example</h4>
+
+                            <p>
+                                2x = 10
+                            </p>
+
+                            <p>
+                                Divide both sides by 2.
+                            </p>
+
+                            <p>
+                                x = 5
+                            </p>
+                        `
+                    },
+
+                    {
+                        title: "Geometry",
+
+                        description:
+                            "Study shapes, angles, measurements, and area.",
+
+                        content: `
+                            <h3>Geometry</h3>
+
+                            <p>
+                                Geometry is the study of shapes, sizes,
+                                angles, and space.
+                            </p>
+
+                            <h4>Important Concepts</h4>
+
+                            <ul>
+                                <li>Area</li>
+                                <li>Perimeter</li>
+                                <li>Angles</li>
+                                <li>Shapes</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Problem Solving",
+
+                        description:
+                            "Develop logical and mathematical problem-solving skills.",
+
+                        content: `
+                            <h3>Problem Solving</h3>
+
+                            <p>
+                                Good problem solving involves understanding
+                                the problem, planning a solution, solving it,
+                                and checking your answer.
+                            </p>
+
+                            <h4>Steps</h4>
+
+                            <ul>
+                                <li>Understand the problem.</li>
+                                <li>Choose a strategy.</li>
+                                <li>Solve the problem.</li>
+                                <li>Check your answer.</li>
+                            </ul>
+                        `
+                    }
+
+                ]
+
+            },
+
+
+            science: {
+
+                title: "Science Lessons",
+
+                description:
+                    "Choose a Science topic to study.",
+
+                items: [
+
+                    {
+                        title: "Biology",
+
+                        description:
+                            "Explore living organisms, cells, and life processes.",
+
+                        content: `
+                            <h3>Biology</h3>
+
+                            <p>
+                                Biology is the study of living things.
+                            </p>
+
+                            <h4>Living Things</h4>
+
+                            <ul>
+                                <li>Plants</li>
+                                <li>Animals</li>
+                                <li>Fungi</li>
+                                <li>Microorganisms</li>
+                            </ul>
+
+                            <h4>Cells</h4>
+
+                            <p>
+                                Cells are the basic units of life.
+                            </p>
+                        `
+                    },
+
+                    {
+                        title: "Chemistry",
+
+                        description:
+                            "Learn about matter, elements, compounds, and reactions.",
+
+                        content: `
+                            <h3>Chemistry</h3>
+
+                            <p>
+                                Chemistry is the study of matter and how
+                                substances interact with each other.
+                            </p>
+
+                            <h4>States of Matter</h4>
+
+                            <ul>
+                                <li>Solid</li>
+                                <li>Liquid</li>
+                                <li>Gas</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Physics",
+
+                        description:
+                            "Study forces, motion, energy, and simple machines.",
+
+                        content: `
+                            <h3>Physics</h3>
+
+                            <p>
+                                Physics studies matter, energy, forces,
+                                and motion.
+                            </p>
+
+                            <h4>Examples</h4>
+
+                            <ul>
+                                <li>Gravity</li>
+                                <li>Friction</li>
+                                <li>Speed</li>
+                                <li>Energy</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Earth Science",
+
+                        description:
+                            "Learn about Earth, rocks, weather, and natural resources.",
+
+                        content: `
+                            <h3>Earth Science</h3>
+
+                            <p>
+                                Earth science studies our planet and its
+                                natural systems.
+                            </p>
+
+                            <h4>Topics</h4>
+
+                            <ul>
+                                <li>Rocks and minerals</li>
+                                <li>Weather</li>
+                                <li>Climate</li>
+                                <li>Natural resources</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "The Solar System",
+
+                        description:
+                            "Explore planets, stars, moons, and space.",
+
+                        content: `
+                            <h3>The Solar System</h3>
+
+                            <p>
+                                The Solar System contains the Sun and the
+                                objects that orbit it.
+                            </p>
+
+                            <h4>Planets</h4>
+
+                            <p>
+                                Mercury, Venus, Earth, Mars, Jupiter,
+                                Saturn, Uranus, and Neptune.
+                            </p>
+                        `
+                    },
+
+                    {
+                        title: "Scientific Method",
+
+                        description:
+                            "Learn how scientists investigate and solve problems.",
+
+                        content: `
+                            <h3>Scientific Method</h3>
+
+                            <p>
+                                Scientists use a systematic process to
+                                investigate questions.
+                            </p>
+
+                            <h4>Steps</h4>
+
+                            <ul>
+                                <li>Ask a question.</li>
+                                <li>Make a hypothesis.</li>
+                                <li>Conduct an experiment.</li>
+                                <li>Collect data.</li>
+                                <li>Analyze results.</li>
+                                <li>Draw a conclusion.</li>
+                            </ul>
+                        `
+                    }
+
+                ]
+
+            },
+
+
+            english: {
+
+                title: "English Lessons",
+
+                description:
+                    "Choose an English topic to study.",
+
+                items: [
+
+                    {
+                        title: "Grammar",
+
+                        description:
+                            "Practice sentence structure, verbs, and grammar rules.",
+
+                        content: `
+                            <h3>Grammar</h3>
+
+                            <p>
+                                Grammar is the set of rules that helps us
+                                use language correctly.
+                            </p>
+
+                            <h4>Parts of Speech</h4>
+
+                            <ul>
+                                <li>Nouns</li>
+                                <li>Pronouns</li>
+                                <li>Verbs</li>
+                                <li>Adjectives</li>
+                                <li>Adverbs</li>
+                                <li>Prepositions</li>
+                            </ul>
+
+                            <h4>Example</h4>
+
+                            <p>
+                                Sarah reads a book.
+                            </p>
+
+                            <p>
+                                "Sarah" is a noun and "reads" is a verb.
+                            </p>
+                        `
+                    },
+
+                    {
+                        title: "Vocabulary",
+
+                        description:
+                            "Learn new words and improve your vocabulary.",
+
+                        content: `
+                            <h3>Vocabulary</h3>
+
+                            <p>
+                                Vocabulary is the collection of words
+                                that a person knows and uses.
+                            </p>
+
+                            <h4>Ways to Improve</h4>
+
+                            <ul>
+                                <li>Read regularly.</li>
+                                <li>Learn new words every day.</li>
+                                <li>Use new words in sentences.</li>
+                                <li>Look up unfamiliar words.</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Reading",
+
+                        description:
+                            "Improve reading comprehension and understanding.",
+
+                        content: `
+                            <h3>Reading</h3>
+
+                            <p>
+                                Reading comprehension means understanding
+                                and interpreting what you read.
+                            </p>
+
+                            <h4>Reading Strategies</h4>
+
+                            <ul>
+                                <li>Identify the main idea.</li>
+                                <li>Find important details.</li>
+                                <li>Look for clues in the text.</li>
+                                <li>Summarize what you read.</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Writing",
+
+                        description:
+                            "Practice paragraphs, essays, and written communication.",
+
+                        content: `
+                            <h3>Writing</h3>
+
+                            <p>
+                                Good writing communicates ideas clearly
+                                and logically.
+                            </p>
+
+                            <h4>A Good Paragraph Includes</h4>
+
+                            <ul>
+                                <li>A topic sentence.</li>
+                                <li>Supporting details.</li>
+                                <li>Examples or explanations.</li>
+                                <li>A concluding sentence.</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Literature",
+
+                        description:
+                            "Explore stories, poems, characters, and themes.",
+
+                        content: `
+                            <h3>Literature</h3>
+
+                            <p>
+                                Literature includes written works such as
+                                stories, poems, plays, and novels.
+                            </p>
+
+                            <h4>Important Elements</h4>
+
+                            <ul>
+                                <li>Characters</li>
+                                <li>Setting</li>
+                                <li>Plot</li>
+                                <li>Conflict</li>
+                                <li>Theme</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Communication",
+
+                        description:
+                            "Develop speaking and listening skills.",
+
+                        content: `
+                            <h3>Communication</h3>
+
+                            <p>
+                                Effective communication means sharing
+                                information and ideas clearly.
+                            </p>
+
+                            <h4>Good Communication Skills</h4>
+
+                            <ul>
+                                <li>Listen carefully.</li>
+                                <li>Speak clearly.</li>
+                                <li>Use appropriate language.</li>
+                                <li>Pay attention to body language.</li>
+                            </ul>
+                        `
+                    }
+
+                ]
+
+            },
+
+
+            social: {
+
+                title: "Social Studies Lessons",
+
+                description:
+                    "Choose a Social Studies topic to study.",
+
+                items: [
+
+                    {
+                        title: "History",
+
+                        description:
+                            "Explore important historical events and civilizations.",
+
+                        content: `
+                            <h3>History</h3>
+
+                            <p>
+                                History is the study of events and people
+                                from the past.
+                            </p>
+
+                            <h4>Why Study History?</h4>
+
+                            <ul>
+                                <li>Understand how societies developed.</li>
+                                <li>Learn from past events.</li>
+                                <li>Understand changes over time.</li>
+                                <li>Learn about important people and cultures.</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Geography",
+
+                        description:
+                            "Learn about countries, maps, landforms, and environments.",
+
+                        content: `
+                            <h3>Geography</h3>
+
+                            <p>
+                                Geography is the study of places, people,
+                                environments, and the relationship between them.
+                            </p>
+
+                            <h4>Key Topics</h4>
+
+                            <ul>
+                                <li>Maps</li>
+                                <li>Continents</li>
+                                <li>Countries</li>
+                                <li>Landforms</li>
+                                <li>Climate</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Government",
+
+                        description:
+                            "Understand government, leadership, and institutions.",
+
+                        content: `
+                            <h3>Government</h3>
+
+                            <p>
+                                Government is the system used to organize
+                                and manage a society or country.
+                            </p>
+
+                            <h4>Functions of Government</h4>
+
+                            <ul>
+                                <li>Make and enforce laws.</li>
+                                <li>Provide public services.</li>
+                                <li>Protect citizens.</li>
+                                <li>Maintain order.</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Economics",
+
+                        description:
+                            "Learn about money, resources, trade, and markets.",
+
+                        content: `
+                            <h3>Economics</h3>
+
+                            <p>
+                                Economics studies how people and societies
+                                use limited resources to meet their needs
+                                and wants.
+                            </p>
+
+                            <h4>Important Concepts</h4>
+
+                            <ul>
+                                <li>Needs and wants</li>
+                                <li>Supply and demand</li>
+                                <li>Trade</li>
+                                <li>Resources</li>
+                                <li>Markets</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Culture and Society",
+
+                        description:
+                            "Explore cultures, traditions, communities, and society.",
+
+                        content: `
+                            <h3>Culture and Society</h3>
+
+                            <p>
+                                Culture includes the beliefs, traditions,
+                                customs, language, and values shared by
+                                a group of people.
+                            </p>
+
+                            <h4>Examples of Culture</h4>
+
+                            <ul>
+                                <li>Food</li>
+                                <li>Language</li>
+                                <li>Music</li>
+                                <li>Clothing</li>
+                                <li>Traditions</li>
+                            </ul>
+                        `
+                    },
+
+                    {
+                        title: "Civics",
+
+                        description:
+                            "Learn about rights, responsibilities, and citizenship.",
+
+                        content: `
+                            <h3>Civics</h3>
+
+                            <p>
+                                Civics is the study of citizens' rights,
+                                responsibilities, and participation in society.
+                            </p>
+
+                            <h4>Good Citizenship</h4>
+
+                            <ul>
+                                <li>Respect other people.</li>
+                                <li>Follow laws.</li>
+                                <li>Help the community.</li>
+                                <li>Understand your rights.</li>
+                                <li>Take responsibility for your actions.</li>
+                            </ul>
+                        `
+                    }
+
+                ]
+
+            }
+
+        };
+
+
+        /* =========================
+           ELEMENTS
+        ========================= */
+
+        const lessonPopup =
+            document.getElementById("lessonPopup");
+
+        const popupTitle =
+            document.getElementById("popupTitle");
+
+        const popupDescription =
+            document.getElementById("popupDescription");
+
+        const lessonContainer =
+            document.getElementById("lessonContainer");
+
+        const closePopup =
+            document.getElementById("closePopup");
+
+        const resourceButtons =
+            document.querySelectorAll(".resource-button");
+
+
+        /* =========================
+           OPEN SUBJECT
+        ========================= */
+
+        resourceButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const subject =
+                    this.getAttribute("data-subject");
+
+                openSubject(subject);
+
+            });
+
+        });
+
+
+        function openSubject(subject) {
+
+            const data =
+                lessons[subject];
+
+            if (!data) {
+                return;
+            }
+
+            popupTitle.textContent =
+                data.title;
+
+            popupDescription.textContent =
+                data.description;
+
+            lessonContainer.innerHTML = "";
+
+            data.items.forEach(function(item, index) {
+
+                const lesson =
+                    document.createElement("button");
+
+                lesson.type = "button";
+
+                lesson.className = "lesson";
+
+                lesson.innerHTML = `
+
+                    <span class="lesson-number">
+                        ${String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <span>
+
+                        <strong>
+                            ${item.title}
+                        </strong>
+
+                        <small>
+                            ${item.description}
+                        </small>
+
+                    </span>
+
+                `;
+
+                lesson.addEventListener(
+                    "click",
+                    function() {
+
+                        openLesson(
+                            subject,
+                            index
+                        );
+
+                    }
+                );
+
+                lessonContainer.appendChild(
+                    lesson
+                );
+
+            });
+
+            lessonPopup.style.display = "flex";
+
+            document.body.style.overflow =
+                "hidden";
+        }
+
+
+        /* =========================
+           OPEN INDIVIDUAL LESSON
+        ========================= */
+
+        function openLesson(subject, index) {
+
+            const lesson =
+                lessons[subject].items[index];
+
+            popupTitle.textContent =
+                lesson.title;
+
+            popupDescription.textContent =
+                lessons[subject].title;
+
+
+            lessonContainer.innerHTML = `
+
+                <button
+                    type="button"
+                    class="back-button"
+                    id="backButton"
+                >
+                    ← Back to Lessons
+                </button>
+
+                <div class="lesson-content">
+
+                    ${lesson.content}
+
+                </div>
+
+            `;
+
+
+            document
+                .getElementById("backButton")
+                .addEventListener(
+                    "click",
+                    function() {
+
+                        openSubject(subject);
+
+                    }
+                );
+
+        }
+
+
+        /* =========================
+           CLOSE POPUP
+        ========================= */
+
+        closePopup.addEventListener(
+            "click",
+            function() {
+
+                lessonPopup.style.display =
+                    "none";
+
+                document.body.style.overflow =
+                    "auto";
+
+            }
+        );
+
+
+        /* =========================
+           CLICK OUTSIDE POPUP
+        ========================= */
+
+        lessonPopup.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === lessonPopup
+                ) {
+
+                    lessonPopup.style.display =
+                        "none";
+
+                    document.body.style.overflow =
+                        "auto";
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           ESC KEY
+        ========================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    lessonPopup.style.display =
+                        "none";
+
+                    document.body.style.overflow =
+                        "auto";
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

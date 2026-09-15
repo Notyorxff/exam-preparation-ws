@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Exam Preparation - Home</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fff8f7;
+            color: #3d3142;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            padding: 20px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(61, 49, 66, 0.95);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #ead6df;
+        }
+
+        nav h1 {
+            font-size: 28px;
+            font-weight: 800;
+
+            background: linear-gradient(
+                90deg,
+                #f29bb2,
+                #d8a7d8
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        /* When mouse goes over a link */
+
+        nav a:hover {
+            color: #f29bb2;
+        }
+
+        /* CURRENT PAGE */
+
+        nav a.active {
+            color: #f29bb2;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 85vh;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(242, 155, 178, 0.3),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(216, 167, 216, 0.3),
+                    transparent 30%
+                ),
+
+                #fff8f7;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .small-title {
+            color: #c96f8e;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: clamp(
+                45px,
+                7vw,
+                78px
+            );
+
+            line-height: 1.05;
+
+            margin-bottom: 25px;
+
+            color: #4a3547;
+        }
+
+        .hero p:not(.small-title) {
+            color: #8b7485;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        button {
+            margin-top: 30px;
+
+            padding: 15px 32px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: linear-gradient(
+                135deg,
+                #e9a3b8,
+                #c99acb
+            );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 30px
+                rgba(201, 111, 142, 0.25);
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(201, 111, 142, 0.35);
+        }
+
+
+        /* =========================
+           WELCOME SECTION
+        ========================= */
+
+        .welcome {
+            padding: 100px 7%;
+
+            text-align: center;
+
+            background: #fff0f3;
+        }
+
+        .section-label {
+            color: #c96f8e;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 12px;
+        }
+
+        .welcome h2 {
+            font-size: 42px;
+
+            line-height: 1.2;
+
+            color: #4a3547;
+
+            margin-bottom: 20px;
+        }
+
+        .center-text {
+            max-width: 700px;
+
+            margin: 0 auto 50px;
+
+            color: #806c7a;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 30px;
+
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 290px;
+
+            padding: 35px;
+
+            text-align: left;
+
+            background: #ffffff;
+
+            border: 1px solid #efd9e1;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(110, 70, 90, 0.1);
+
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            border-color: #e9a3b8;
+
+            box-shadow:
+                0 20px 45px
+                rgba(220, 130, 160, 0.2);
+        }
+
+        .card h3 {
+            color: #c96f8e;
+
+            font-size: 21px;
+
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #806c7a;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 45px 20px;
+
+            text-align: center;
+
+            background: #3d3142;
+
+            border-top: 1px solid #ead6df;
+        }
+
+        footer h3 {
+            color: white;
+
+            font-size: 22px;
+
+            margin-bottom: 5px;
+        }
+
+        footer p {
+            color: #d8c4ce;
+        }
+
+        footer .copyright {
+            margin-top: 20px;
+
+            font-size: 13px;
+
+            color: #a9919f;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding: 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            .hero h2 {
+                font-size: 45px;
+            }
+
+            .hero p:not(.small-title) {
+                font-size: 17px;
+            }
+
+            .welcome {
+                padding: 70px 20px;
+            }
+
+            .welcome h2 {
+                font-size: 32px;
+            }
+
+            .card {
+                width: 100%;
+
+                max-width: 400px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <h1>Exam Preparation</h1>
+
+        <ul>
+
+            <!-- HOME IS ACTIVE -->
+
+            <li>
+                <a href="index.html" class="active">Home</a>
+            </li>
+
+            <li>
+                <a href="schedule.html">Schedule</a>
+            </li>
+
+            <li>
+                <a href="resources.html">Resources</a>
+            </li>
+
+            <li>
+                <a href="tips.html">Study Tips</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                WELCOME TO EXAM READY
+            </p>
+
+            <h2>
+                Study Smarter<br>
+                Crush Your Exams
+            </h2>
+
+            <p>
+                Plan your exams, organize your resources,
+                and study with confidence.
+            </p>
+
+            <a href="schedule.html">
+
+                <button>
+                    Start Studying →
+                </button>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section class="welcome">
+
+        <p class="section-label">
+            ABOUT US
+        </p>
+
+        <h2>
+            Everything You Need<br>
+            To Be Exam Ready
+        </h2>
+
+        <p class="center-text">
+            Exam Ready helps students organize their exams,
+            find useful study resources, and develop better
+            study habits.
+        </p>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>
+                    Stay Organized
+                </h3>
+
+                <p>
+                    Keep track of your exam dates,
+                    times, and rooms in one place.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Study Resources
+                </h3>
+
+                <p>
+                    Find useful materials and resources
+                    for all your important subjects.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Study Smarter
+                </h3>
+
+                <p>
+                    Learn effective study techniques
+                    and improve your preparation.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>
+            Exam Preparation
+        </h3>
+
+        <p>
+            Prepare smarter. Study better. Succeed.
+        </p>
+
+        <p class="copyright">
+            © 2026 Exam Preparation Website
+        </p>
+
+    </footer>
+
+
+</body>
+</html>

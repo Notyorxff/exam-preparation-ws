@@ -1,0 +1,509 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+<title>Exam Preparation - Study Tips</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Trebuchet MS", Arial, sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: #fff8f7;
+        color: #3d3142;
+        line-height: 1.6;
+    }
+
+
+    /* NAVIGATION */
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 20px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(61, 49, 66, 0.95);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid #ead6df;
+    }
+
+    nav h1 {
+        font-size: 28px;
+        font-weight: 800;
+        background: linear-gradient(
+            90deg,
+            #f29bb2,
+            #d8a7d8
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+    }
+
+    nav a {
+        color: #f9e9ee;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    /* HOVER */
+
+    nav a:hover {
+        color: #f29bb2;
+    }
+
+    /* ACTIVE PAGE */
+
+    nav a.active {
+        color: #f29bb2;
+    }
+
+
+    /* PAGE HEADER */
+
+    .page-header {
+        padding: 90px 20px;
+        text-align: center;
+        background:
+            radial-gradient(
+                circle at 20% 20%,
+                rgba(242, 155, 178, 0.3),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 80% 70%,
+                rgba(216, 167, 216, 0.3),
+                transparent 30%
+            ),
+            #fff8f7;
+    }
+
+    .small-title {
+        color: #c96f8e;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 4px;
+        margin-bottom: 20px;
+    }
+
+    .page-header h2 {
+        font-size: clamp(
+            45px,
+            7vw,
+            70px
+        );
+        line-height: 1.05;
+        color: #4a3547;
+        margin-bottom: 25px;
+    }
+
+    .page-header p {
+        color: #8b7485;
+        font-size: 20px;
+    }
+
+
+    /* STUDY TIPS SECTION */
+
+    .tips-section {
+        padding: 100px 7%;
+        text-align: center;
+        background: #fff0f3;
+    }
+
+    .section-label {
+        color: #c96f8e;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 4px;
+        margin-bottom: 12px;
+    }
+
+    .tips-section h2 {
+        font-size: 42px;
+        line-height: 1.2;
+        color: #4a3547;
+        margin-bottom: 20px;
+    }
+
+    .intro {
+        max-width: 700px;
+        margin: 0 auto 50px;
+        color: #806c7a;
+        font-size: 18px;
+    }
+
+
+    /* CARDS */
+
+    .cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        max-width: 930px;
+        margin: 0 auto;
+    }
+
+    .card {
+        width: 290px;
+        padding: 35px;
+        text-align: left;
+        background: #ffffff;
+        border: 1px solid #efd9e1;
+        border-radius: 22px;
+        box-shadow:
+            0 15px 40px
+            rgba(110, 70, 90, 0.1);
+        transition: 0.4s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        border-color: #e9a3b8;
+        box-shadow:
+            0 20px 45px
+            rgba(220, 130, 160, 0.2);
+    }
+
+    .card h3 {
+        color: #c96f8e;
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: #806c7a;
+    }
+
+
+    /* DAILY STUDY PLAN */
+
+    .daily-plan {
+        padding: 100px 7%;
+        text-align: center;
+        background: #fff8f7;
+    }
+
+    .daily-plan h2 {
+        font-size: 42px;
+        color: #4a3547;
+        margin-bottom: 20px;
+    }
+
+    .daily-plan > p {
+        max-width: 700px;
+        margin: 0 auto 40px;
+        color: #806c7a;
+        font-size: 18px;
+    }
+
+
+    /* STUDY LIST */
+
+    .study-list {
+        max-width: 650px;
+        margin: 0 auto 40px;
+        padding: 30px 45px;
+        text-align: left;
+        background: white;
+        border: 1px solid #efd9e1;
+        border-radius: 22px;
+        box-shadow:
+            0 15px 40px
+            rgba(110, 70, 90, 0.1);
+    }
+
+    .study-list li {
+        margin: 12px 0;
+        color: #806c7a;
+    }
+
+    .study-list li::marker {
+        color: #c96f8e;
+    }
+
+
+    /* BUTTON */
+
+    .schedule-button {
+        display: inline-block;
+        padding: 15px 32px;
+        border-radius: 50px;
+        background: linear-gradient(
+            135deg,
+            #e9a3b8,
+            #c99acb
+        );
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow:
+            0 10px 30px
+            rgba(201, 111, 142, 0.25);
+        transition: 0.3s;
+    }
+
+    .schedule-button:hover {
+        transform: translateY(-5px);
+        box-shadow:
+            0 15px 40px
+            rgba(201, 111, 142, 0.35);
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 45px 20px;
+        text-align: center;
+        background: #3d3142;
+        border-top: 1px solid #ead6df;
+    }
+
+    footer h3 {
+        color: white;
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    footer p {
+        color: #d8c4ce;
+    }
+
+    footer .copyright {
+        margin-top: 20px;
+        font-size: 13px;
+        color: #a9919f;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 768px) {
+
+        nav {
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        nav ul {
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            font-size: 14px;
+        }
+
+        .page-header {
+            padding: 70px 20px;
+        }
+
+        .page-header h2 {
+            font-size: 45px;
+        }
+
+        .page-header p {
+            font-size: 17px;
+        }
+
+        .tips-section {
+            padding: 70px 20px;
+        }
+
+        .tips-section h2 {
+            font-size: 32px;
+        }
+
+        .daily-plan {
+            padding: 70px 20px;
+        }
+
+        .daily-plan h2 {
+            font-size: 32px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .study-list {
+            padding: 25px 30px;
+        }
+
+    }
+
+</style>
+
+</head> 
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <h1>
+        Exam Preparation
+    </h1>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="tips.html" class="active">Study Tips</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div>
+        <p class="small-title">
+            STUDY SMARTER
+        </p>
+        <h2>
+            Study Tips
+        </h2>
+        <p>
+            Simple habits that can help you prepare
+            better and feel confident on exam day.
+        </p>
+    </div>
+</section>
+
+
+<!-- STUDY TIPS -->
+<section class="tips-section">
+    <p class="section-label">
+        BETTER STUDY HABITS
+    </p>
+    <h2>
+        Tips To Help You<br>
+        Study Smarter
+    </h2>
+    <p class="intro">
+        Good study habits can make exam preparation
+        easier, more organized, and less stressful.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Create a Study Schedule</h3>
+            <p>
+                Plan your study time and give each
+                subject enough attention. A schedule
+                can help you stay organized.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Take Short Breaks</h3>
+            <p>
+                Take short breaks while studying.
+                Giving your brain time to rest can
+                help you stay focused.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Review Your Notes</h3>
+            <p>
+                Review your notes regularly so that
+                important information stays fresh
+                in your memory.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Practice Past Exams</h3>
+            <p>
+                Practice with past exam questions
+                to become familiar with the types
+                of questions you may see.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Stay Organized</h3>
+            <p>
+                Keep your books, notes, and study
+                materials organized so you can find
+                everything you need quickly.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Get Enough Sleep</h3>
+            <p>
+                Make sure you get enough rest before
+                an exam so you can stay focused and
+                ready to learn.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- DAILY STUDY PLAN -->
+<section class="daily-plan">
+    <p class="section-label">
+        DAILY ROUTINE
+    </p>
+    <h2>
+        A Simple Study Plan
+    </h2>
+    <p>
+        You don't need to study for hours without
+        stopping. Try breaking your study time into
+        smaller, focused sessions.
+    </p>
+
+    <ul class="study-list">
+        <li>Study one subject for 30–45 minutes.</li>
+        <li>Take a short 5–10 minute break.</li>
+        <li>Review what you learned.</li>
+        <li>Practice a few questions.</li>
+        <li>Move on to your next subject.</li>
+    </ul>
+
+    <a href="schedule.html" class="schedule-button">
+        View Exam Schedule →
+    </a>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <h3>
+        Exam Preparation
+    </h3>
+    <p>
+        Prepare smarter. Study better. Succeed.
+    </p>
+    <p class="copyright">
+        © 2026 Exam Preparation Website
+    </p>
+</footer>
+
+</body>
+</html>

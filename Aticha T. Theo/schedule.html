@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Exam Preparation - Schedule</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fff8f7;
+            color: #3d3142;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            padding: 20px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(61, 49, 66, 0.95);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #ead6df;
+        }
+
+        nav h1 {
+            font-size: 28px;
+            font-weight: 800;
+
+            background: linear-gradient(
+                90deg,
+                #f29bb2,
+                #d8a7d8
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #f29bb2;
+        }
+
+        /* CURRENT PAGE */
+
+        nav a.active {
+            color: #f29bb2;
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+            text-align: center;
+
+            padding: 100px 20px 70px;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(242, 155, 178, 0.25),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(216, 167, 216, 0.25),
+                    transparent 30%
+                ),
+
+                #fff8f7;
+        }
+
+        .small-title {
+            color: #d47795;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 15px;
+        }
+
+        .page-header h2 {
+            font-size: clamp(
+                40px,
+                6vw,
+                65px
+            );
+
+            margin-bottom: 15px;
+
+            color: #4a3547;
+        }
+
+        .page-header p {
+            color: #8b7485;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 80px 7%;
+        }
+
+        section h2 {
+            text-align: center;
+
+            font-size: 38px;
+
+            color: #4a3547;
+
+            margin-bottom: 40px;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-container {
+            width: 90%;
+            max-width: 1000px;
+
+            margin: auto;
+
+            overflow-x: auto;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(
+                    110,
+                    70,
+                    90,
+                    0.12
+                );
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            background: #ffffff;
+
+            overflow: hidden;
+        }
+
+        th {
+            padding: 20px;
+
+            background: #e9a3b8;
+
+            color: #ffffff;
+
+            font-size: 16px;
+
+            text-align: center;
+        }
+
+        td {
+            padding: 20px;
+
+            text-align: center;
+
+            color: #5d4a59;
+
+            border-bottom: 1px solid #f1dfe5;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #fff0f4;
+
+            color: #4a3547;
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 30px;
+
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 290px;
+
+            padding: 35px;
+
+            background: #ffffff;
+
+            border: 1px solid #efd9e1;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(
+                    110,
+                    70,
+                    90,
+                    0.1
+                );
+
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            border-color: #e9a3b8;
+
+            box-shadow:
+                0 20px 45px
+                rgba(
+                    220,
+                    130,
+                    160,
+                    0.2
+                );
+        }
+
+        .card h3 {
+            color: #c96f8e;
+
+            font-size: 21px;
+
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #806c7a;
+        }
+
+
+        /* =========================
+           NEXT PAGE ARROW
+        ========================= */
+
+        .next-page {
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: -20px;
+
+            margin-bottom: 80px;
+        }
+
+        .next-arrow {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 15px 30px;
+
+            background: linear-gradient(
+                135deg,
+                #e9a3b8,
+                #c99acb
+            );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            border-radius: 50px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(
+                    201,
+                    111,
+                    142,
+                    0.25
+                );
+
+            transition: 0.3s;
+        }
+
+        .next-arrow:hover {
+            transform: translateX(8px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(
+                    201,
+                    111,
+                    142,
+                    0.35
+                );
+        }
+
+        .next-arrow span {
+            font-size: 22px;
+
+            transition: 0.3s;
+        }
+
+        .next-arrow:hover span {
+            transform: translateX(5px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 45px 20px;
+
+            text-align: center;
+
+            background: #3d3142;
+
+            border-top: 1px solid #ead6df;
+        }
+
+        footer h3 {
+            color: #ffffff;
+
+            font-size: 22px;
+
+            margin-bottom: 5px;
+        }
+
+        footer p {
+            color: #d8c4ce;
+        }
+
+        .copyright {
+            margin-top: 20px;
+
+            font-size: 13px;
+
+            color: #a9919f;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding: 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .page-header {
+                padding: 70px 20px 50px;
+            }
+
+            .page-header h2 {
+                font-size: 42px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            section h2 {
+                font-size: 30px;
+            }
+
+            .table-container {
+                width: 100%;
+            }
+
+            th,
+            td {
+                padding: 14px 10px;
+
+                font-size: 14px;
+            }
+
+            .card {
+                width: 100%;
+
+                max-width: 400px;
+            }
+
+            .next-page {
+                margin-top: -10px;
+
+                margin-bottom: 60px;
+            }
+
+            .next-arrow {
+                padding: 13px 25px;
+
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <h1>
+            Exam Preparation
+        </h1>
+
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="schedule.html" class="active">
+                    Schedule
+                </a>
+            </li>
+
+            <li>
+                <a href="resources.html">
+                    Resources
+                </a>
+            </li>
+
+            <li>
+                <a href="tips.html">
+                    Study Tips
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================= -->
+
+    <div class="page-header">
+
+        <p class="small-title">
+            STAY ORGANIZED
+        </p>
+
+        <h2>
+            Exam Schedule
+        </h2>
+
+        <p>
+            Know your exams. Plan ahead. Be ready.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN SUBJECTS
+    ========================= -->
+
+    <section>
+
+        <h2>
+            Main Subjects
+        </h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <tr>
+
+                    <th>
+                        Subject
+                    </th>
+
+                    <th>
+                        Time
+                    </th>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Mathematics
+                    </td>
+
+                    <td>
+                        9:00 AM
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Science
+                    </td>
+
+                    <td>
+                        12:00 PM
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        English
+                    </td>
+
+                    <td>
+                        3:00 PM
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Social Studies
+                    </td>
+
+                    <td>
+                        6:00 PM
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GUIDELINES
+    ========================= -->
+
+    <section>
+
+        <h2>
+            Guidelines
+        </h2>
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>
+                    Check Your Dates
+                </h3>
+
+                <p>
+                    Make sure you know when and where
+                    every exam will take place.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Prepare Early
+                </h3>
+
+                <p>
+                    Start reviewing your subjects several
+                    days before each exam.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Stay Organized
+                </h3>
+
+                <p>
+                    Keep your notes, books, and study
+                    materials ready.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NEXT PAGE ARROW
+    ========================= -->
+
+    <div class="next-page">
+
+        <a
+            href="resources.html"
+            class="next-arrow"
+        >
+
+            Resources
+
+            <span>
+                →
+            </span>
+
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>
+            Exam Preparation
+        </h3>
+
+        <p>
+            Prepare smarter. Study better. Succeed.
+        </p>
+
+        <p class="copyright">
+            © 2026 Exam Preparation Website
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
